@@ -76,7 +76,12 @@
     
    }
 }
-
+@media all and (max-width:425px){
+    .btn-contacto{
+        display: flex !important;
+        flex-direction: column !important;
+    }
+}
 @media all and (max-width:380px){
     .menu{
         flex-direction: column;
