@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jQuery-Validation-Engine/2.6.4/validationEngine.jquery.min.css" integrity="sha512-fvBUZJJBrJrzrFYM/EN2isPokoNnx331y30ZXIxRRlop1aq6rT6d8oY6WJVsiXZoso0dIZ2nbQjtGLi6Kkxr/Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
-    <script src="formulario.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     
-    <link rel="stylesheet" href="tpFinal.css" />
+    <link rel="stylesheet" href="tpFinal.css"/>
+    <script src="formulario.js"></script>
     <title>Document</title>
 </head>
 <body>
@@ -67,20 +68,20 @@
 
               <div class="modal-body">
                   <!-- Aquí se cargará el formulario -->
-                  <form id="forumalario-contacto" method="post">
+                  <form id="#formularioContacto"  name="registration">
                       <div class="form-group">
                         <label for="nombre">Nombre</label>
-                        <input type="text" class="form-control" id="nombre" placeholder="Ingresa tu nombre"  required>
+                        <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ingresa tu nombre"  required>
                       </div>
 
                       <div class="form-group">
                         <label for="email">Email</label>
-                        <input type="email" class="form-control" id="email" placeholder="Ingresa tu email"   required>
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Ingresa tu email"   required>
                       </div>
                       
                       <div class="form-group">
                         <label for="telefono">Teléfono</label>
-                        <input type="tel" class="form-control" id="telefono" placeholder="Ingresa tu teléfono"  required>
+                        <input type="tel" class="form-control" id="telefono" name="telefono" placeholder="Ingresa tu teléfono"  required>
                       </div>
                       
                       
@@ -116,17 +117,17 @@
                       
                       <div class="form-group">
                         <label for="fecha">Fecha</label>
-                        <input type="date" class="form-control" id="fecha" required min="1900-01-01" max="2004-12-31">
+                        <input type="date" class="form-control" id="fecha" name="fecha" required min="1900-01-01" max="2004-12-31">
                       </div>
                       
                       <div class="form-group form-check">
-                        <input type="checkbox" class="form-check-input" id="mayor-de-edad" required>
-                        <label class="form-check-label" for="mayor-de-edad">Soy mayor de 18 años</label>
+                        <input type="checkbox" class="form-check-input" id="mayorEdad" required>
+                        <label class="form-check-label" for="mayorEdad" name="mayorEdad">Soy mayor de 18 años</label>
                       </div>
                       
                       <div class="form-group">
                         <label for="mensaje">Mensaje</label>
-                        <textarea class="form-control" id="mensaje" rows="5" placeholder="Ingresa tu mensaje" required></textarea>
+                        <textarea class="form-control" id="mensaje" rows="5"name="mensaje" placeholder="Ingresa tu mensaje" required></textarea>
                       </div>
                       
                       <button type="submit" class="btn btn-primary mt-3">Enviar</button>
@@ -148,7 +149,7 @@
 
               <div class="modal-body">
                   <!-- Aquí se cargará el formulario -->
-                  <form id="#formularioProceso">
+                  <form id="#formularioProceso" method="post">
                       <div class="form-group" >
                         <label for="nombreProceso">Nombre</label>
                         <input type="text" class="form-control" id="nombreProceso" placeholder="Ingresa tu nombre" required>
@@ -384,6 +385,6 @@
   
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-  <script src="formulario.js"></script>
+  
 </body>
 </html>

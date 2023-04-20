@@ -20,13 +20,13 @@ $(document).ready(function() {
         rules: {
             nombreProceso: 'required',
             emailProceso: 'required',
-            provincia: 'required',
+            provinciaProceso: 'required',
             cantidad: 'required'
         },
         messages: {
             nombreProceso: 'Por favor ingrese su nombre',
             emailProceso: 'Por favor ingrese el precio',
-            provincia:'Por favor seleccione la provincia a viajar',
+            provinciaProceso:'Por favor seleccione la provincia a viajar',
             cantidad: 'Por favor ingrese la cantidad'
         },
         submitHandler: function(form) {
@@ -93,7 +93,7 @@ $(document).ready(function() {
         
         }
     });
-    $('#formulario-contacto').validate({
+    $('#formularioContacto').validate({
       rules:{
         nombre:{
           required: true,
@@ -183,7 +183,81 @@ $(document).ready(function() {
   });
 
 
-  function generarPDF() {
+  
+$(function() {
+
+  // Initialize form validation on the registration form.
+
+  // It has the name attribute "registration"
+
+  $("form[name='registration']").validate({
+
+    // Specify validation rules
+
+    rules: {
+
+      // The key name on the left side is the name attribute
+
+      // of an input field. Validation rules are defined
+
+      // on the right side
+
+      nombre: "required",
+
+      email: {
+
+        required: true,
+
+        // Specify that email should be validated
+
+        // by the built-in "email" rule
+
+        email: true
+
+      },
+
+      telefono:{
+        required: true ,
+        number: true
+      },
+      provincia:'required',
+      
+      fecha:{
+        required: true ,
+        number: true
+      },
+
+      mayorEdad: 'required',
+      mensaje:'required'
+    },
+
+    // Specify validation error messages
+
+    messages: {
+
+      nombre: "Por favor, introduzca su nombre",
+
+      telefono: "Por favor, introduzca su telefono",
+
+      email: "Por favor, introduce una dirección de correo electrónico válida",
+
+      mensaje: "Por favor, introduzca el motivo del mensaje",
+
+      provincia: "Por favor, selecciona la provincia",
+    },
+
+    submitHandler: function(form) {
+
+      form.submit();
+
+    }
+
+  });
+
+});
+
+
+  /* function generarPDF() {
     // Obtener los valores del formulario
     var nombre = document.getElementById('nombreProceso').value;
     var email = document.getElementById('emailProceso').value;
@@ -200,7 +274,7 @@ $(document).ready(function() {
 
     // Guardar el PDF como un archivo
     doc.save('formulario.pdf');
-}
+} */
    
 
 
