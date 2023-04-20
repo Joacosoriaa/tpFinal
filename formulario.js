@@ -1,3 +1,4 @@
+//Mostrar el modal 
 $(document).ready(function() {
     $("#contact-btn").click(function() {
       $("#contact-modal").modal("show");
@@ -12,6 +13,53 @@ $(document).ready(function() {
     });
   });
 
+
+  function generarPDF() {
+    // Obtener los valores del formulario
+    var nombre = document.getElementById('nombreProceso').value;
+    var email = document.getElementById('emailProceso').value;
+    var cantidad = document.getElementById('cantidad').value;
+    var provincia = document.getElementById('provinciaProceso');
+            var provinciaSelected = this.options[provincia.selectedIndex].text;
+            var serviciosAdicionales = 0;
+
+            if(document.getElementById("transporte").checked==true){
+                serviciosAdicionales += 5000;
+            }
+            else{
+              serviciosAdicionales = 0;
+            }
+              if(document.getElementById("excursiones").checked==true){
+                serviciosAdicionales = serviciosAdicionales + 3500;
+              }
+              else{
+                serviciosAdicionales = serviciosAdicionales ;
+              }
+            console.log(serviciosAdicionales);
+      
+
+            // Realizar cálculos para la cotización
+            var subtotal = 20000 * cantidad + serviciosAdicionales;
+            var impuesto = subtotal * 0.21; // Se asume un impuesto del 21%
+            var total = subtotal + impuesto;
+
+
+    // Crear un nuevo documento PDF
+    var doc = new jsPDF();
+
+    // Agregar contenido al PDF
+    doc.text(20, 20, 'Formulario de ejemplo');
+    doc.text(20, 30, 'Nombre: ' + nombre);
+    doc.text(20, 40, 'Email: ' + email);
+    doc.text(20, 50, 'Provincia a viajar: ' + provinciaSelected);
+    doc.text(20, 60, 'Cantidad de personas: ' + cantidad);
+    doc.text(20, 70, 'Subtotal: ' + subtotal);
+    doc.text(20, 80, 'Impuesto: ' + impuesto);
+    doc.text(20, 90, 'Total a pagar: ' + total);
+    // Guardar el PDF como un archivo
+    doc.save('formulario.pdf');
+  } 
+   
 // Envio de formulario de proceso y contacto 
 
   document.addEventListener('DOMContentLoaded', function() {
@@ -106,18 +154,11 @@ $(document).ready(function() {
         provincia:{
           required: true,
         },
-        telefono:{
-          required: true,
-          telefono: true,
-        },
         ciudad:{
           required: true,
           minlenght: 3,
         },
-        fecha:{
-          required: true,
-          Date: true,
-        },
+        
         mensaje: 'required'
       },
       messages: {
@@ -132,15 +173,6 @@ $(document).ready(function() {
         email:"Por favor, introduce una dirección de correo electrónico válida"
       },
 
-      telefono:{
-        required: "Por favor, introduzca un telefono",
-        telefono: "Por favor, introduce un telefono válido"
-      },
-
-      fecha:{
-        required: "Por favor, introduzca una fecha",
-        Date: "Por favor, introduce una fecha valida"
-      },
       mensaje:'Por favor ingrese el motivo del contacto'
       
       },
@@ -154,7 +186,7 @@ $(document).ready(function() {
 
         // Hacer la petición AJAX para enviar los datos al servidor
         $.ajax({
-            url: 'https://reqres.in/api/users?page=2', // URL de regres.in para la petición de contacto
+            url: 'https://reqres.in/api/users', // URL de regres.in para la petición de contacto
             method: 'POST', // Método HTTP POST
             data: {
                 nombre: nombre,
@@ -182,86 +214,35 @@ $(document).ready(function() {
   
   });
 
-
-  
-$(function() {
-
-  // Initialize form validation on the registration form.
-
-  // It has the name attribute "registration"
-
-  $("form[name='registration']").validate({
-
-    // Specify validation rules
-
-    rules: {
-
-      // The key name on the left side is the name attribute
-
-      // of an input field. Validation rules are defined
-
-      // on the right side
-
-      nombre: "required",
-
-      email: {
-
-        required: true,
-
-        // Specify that email should be validated
-
-        // by the built-in "email" rule
-
-        email: true
-
-      },
-
-      telefono:{
-        required: true ,
-        number: true
-      },
-      provincia:'required',
-      
-      fecha:{
-        required: true ,
-        number: true
-      },
-
-      mayorEdad: 'required',
-      mensaje:'required'
-    },
-
-    // Specify validation error messages
-
-    messages: {
-
-      nombre: "Por favor, introduzca su nombre",
-
-      telefono: "Por favor, introduzca su telefono",
-
-      email: "Por favor, introduce una dirección de correo electrónico válida",
-
-      mensaje: "Por favor, introduzca el motivo del mensaje",
-
-      provincia: "Por favor, selecciona la provincia",
-    },
-
-    submitHandler: function(form) {
-
-      form.submit();
-
-    }
-
-  });
-
-});
-
-
-  /* function generarPDF() {
+   function generarPDF() {
     // Obtener los valores del formulario
     var nombre = document.getElementById('nombreProceso').value;
     var email = document.getElementById('emailProceso').value;
-    var provincia = document.getElementById('provinciaProceso').value;
+    var cantidad = document.getElementById('cantidad').value;
+    var provincia = document.getElementById('provinciaProceso');
+            var provinciaSelected = this.options[provincia.selectedIndex].text;
+            var serviciosAdicionales = 0;
+
+            if(document.getElementById("transporte").checked==true){
+                serviciosAdicionales += 5000;
+            }
+            else{
+              serviciosAdicionales = 0;
+            }
+              if(document.getElementById("excursiones").checked==true){
+                serviciosAdicionales = serviciosAdicionales + 3500;
+              }
+              else{
+                serviciosAdicionales = serviciosAdicionales ;
+              }
+            console.log(serviciosAdicionales);
+      
+
+            // Realizar cálculos para la cotización
+            var subtotal = 20000 * cantidad + serviciosAdicionales;
+            var impuesto = subtotal * 0.21; // Se asume un impuesto del 21%
+            var total = subtotal + impuesto;
+
 
     // Crear un nuevo documento PDF
     var doc = new jsPDF();
@@ -269,12 +250,15 @@ $(function() {
     // Agregar contenido al PDF
     doc.text(20, 20, 'Formulario de ejemplo');
     doc.text(20, 30, 'Nombre: ' + nombre);
-    doc.text(20, 40, 'Provincia: ' + provincia);
-    doc.text(20, 50, 'Email: ' + email);
-
+    doc.text(20, 40, 'Email: ' + email);
+    doc.text(20, 50, 'Provincia a viajar: ' + provinciaSelected);
+    doc.text(20, 60, 'Cantidad de personas: ' + cantidad);
+    doc.text(20, 70, 'Subtotal: ' + subtotal);
+    doc.text(20, 80, 'Impuesto: ' + impuesto);
+    doc.text(20, 90, 'Total a pagar: ' + total);
     // Guardar el PDF como un archivo
     doc.save('formulario.pdf');
-} */
+  } 
    
 
 
